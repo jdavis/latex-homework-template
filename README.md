@@ -18,6 +18,9 @@ The LaTeX file that I use as the base for all my homeworks in university.
 ### Statistics Problem:
 ![Example problems 3](/images/latex4.png)
 
+### Proof Problem:
+![Example problems 4](/images/latex5.png)
+
 ## Installing
 
 1. First you'll need LaTeX. Instructions on obtaining it can be found here:

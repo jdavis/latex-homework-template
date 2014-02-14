@@ -9,10 +9,13 @@ The LaTeX file that I use as the base for all my homeworks in university.
 
 ![Cover page](/images/latex1.png)
 
-### Various Types of Problems
-
+### Big Oh Example Problem:
 ![Example problems 1](/images/latex2.png)
+
+### Automata & Pseudocode Problems:
 ![Example problems 2](/images/latex3.png)
+
+### Statistics Problem:
 ![Example problems 3](/images/latex4.png)
 
 ## Installing

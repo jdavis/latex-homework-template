@@ -203,50 +203,6 @@
 \pagebreak
 
 \begin{homeworkProblem}
-    Prove a polynomial of degree \(k\), \(a_kn^k + a_{k - 1}n^{k - 1} + \hdots
-    + a_1n^1 + a_0n^0\) is a member of \(\Theta(n^k)\) where \(a_k \hdots a_0\)
-    are nonnegative constants.
-
-    \begin{proof}
-        To prove that \(a_kn^k + a_{k - 1}n^{k - 1} + \hdots + a_1n^1 +
-        a_0n^0\), we must show the following:
-
-        \[
-            \exists c_1 \exists c_2 \forall n \geq n_0,\ {c_1 \cdot g(n) \leq
-            f(n) \leq c_2 \cdot g(n)}
-        \]
-
-        For the first inequality, it is easy to see that it holds because no
-        matter what the constants are, \(n^k \leq a_kn^k + a_{k - 1}n^{k - 1} +
-        \hdots + a_1n^1 + a_0n^0\) even if \(c_1 = 1\) and \(n_0 = 1\).  This
-        is because \(n^k \leq c_1 \cdot a_kn^k\) for any nonnegative constant,
-        \(c_1\) and \(a_k\).
-        \\
-
-        Taking the second inequality, we prove it in the following way.
-        By summation, \(\sum\limits_{i=0}^k a_i\) will give us a new constant,
-        \(A\). By taking this value of \(A\), we can then do the following:
-
-        \[
-            \begin{split}
-                a_kn^k + a_{k - 1}n^{k - 1} + \hdots + a_1n^1 + a_0n^0 &=
-                \\
-                &\leq (a_k + a_{k - 1} \hdots a_1 + a_0) \cdot n^k
-                \\
-                &= A \cdot n^k
-                \\
-                &\leq c_2 \cdot n^k
-            \end{split}
-        \]
-
-        where \(n_0 = 1\) and \(c_2 = A\). \(c_2\) is just a constant. Thus the
-        proof is complete.
-    \end{proof}
-\end{homeworkProblem}
-
-\pagebreak
-
-\begin{homeworkProblem}
     Let \(\Sigma = \{0, 1\}\). Construct a DFA \(A\) that recognizes the
     language that consists of all binary numbers that can be divided by 5.
     \\
@@ -499,6 +455,50 @@
         \end{split}
     \]
 
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Prove a polynomial of degree \(k\), \(a_kn^k + a_{k - 1}n^{k - 1} + \hdots
+    + a_1n^1 + a_0n^0\) is a member of \(\Theta(n^k)\) where \(a_k \hdots a_0\)
+    are nonnegative constants.
+
+    \begin{proof}
+        To prove that \(a_kn^k + a_{k - 1}n^{k - 1} + \hdots + a_1n^1 +
+        a_0n^0\), we must show the following:
+
+        \[
+            \exists c_1 \exists c_2 \forall n \geq n_0,\ {c_1 \cdot g(n) \leq
+            f(n) \leq c_2 \cdot g(n)}
+        \]
+
+        For the first inequality, it is easy to see that it holds because no
+        matter what the constants are, \(n^k \leq a_kn^k + a_{k - 1}n^{k - 1} +
+        \hdots + a_1n^1 + a_0n^0\) even if \(c_1 = 1\) and \(n_0 = 1\).  This
+        is because \(n^k \leq c_1 \cdot a_kn^k\) for any nonnegative constant,
+        \(c_1\) and \(a_k\).
+        \\
+
+        Taking the second inequality, we prove it in the following way.
+        By summation, \(\sum\limits_{i=0}^k a_i\) will give us a new constant,
+        \(A\). By taking this value of \(A\), we can then do the following:
+
+        \[
+            \begin{split}
+                a_kn^k + a_{k - 1}n^{k - 1} + \hdots + a_1n^1 + a_0n^0 &=
+                \\
+                &\leq (a_k + a_{k - 1} \hdots a_1 + a_0) \cdot n^k
+                \\
+                &= A \cdot n^k
+                \\
+                &\leq c_2 \cdot n^k
+            \end{split}
+        \]
+
+        where \(n_0 = 1\) and \(c_2 = A\). \(c_2\) is just a constant. Thus the
+        proof is complete.
+    \end{proof}
 \end{homeworkProblem}
 
 \end{document}

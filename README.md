@@ -3,6 +3,15 @@ latex-homework-template
 
 The LaTeX file that I use as the base for all my homeworks in university.
 
+## Features
+
+Here are just a few features of this homework template.
+
+1. Title page.
+2. Problem markers.
+3. Configurable problem numbers (see the last 3 problems for an example).
+4. Some commonly used math macros.
+
 ## Screenshots
 
 ### The Cover Page:
@@ -20,6 +29,9 @@ The LaTeX file that I use as the base for all my homeworks in university.
 
 ### Proof Problem:
 ![Example problems 4](/images/latex5.png)
+
+### Adjustable Problem Numbers
+![Example problem numbering](/images/latex6.png)
 
 ## Installing
 

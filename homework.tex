@@ -57,7 +57,18 @@
 \setcounter{homeworkProblemCounter}{1}
 \nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
 
-\newenvironment{homeworkProblem}{
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
     \section{Problem \arabic{homeworkProblemCounter}}
     \setcounter{partCounter}{1}
     \enterProblemHeader{homeworkProblemCounter}
@@ -499,6 +510,30 @@
         where \(n_0 = 1\) and \(c_2 = A\). \(c_2\) is just a constant. Thus the
         proof is complete.
     \end{proof}
+\end{homeworkProblem}
+
+\pagebreak
+
+%
+% Non sequential homework problems
+%
+
+% Jump to problem 18
+\begin{homeworkProblem}[18]
+    Evaluate \(\sum_{k=1}^{5} k^2\) and \(\sum_{k=1}^{5} (k - 1)^2\).
+\end{homeworkProblem}
+
+% Continue counting to 19
+\begin{homeworkProblem}
+    Find the derivative of \(f(x) = x^4 + 3x^2 - 2\)
+\end{homeworkProblem}
+
+% Go back to where we left off
+\begin{homeworkProblem}[6]
+    Evaluate the integrals
+    \(\int_0^1 (1 - x^2) \dx\)
+    and
+    \(\int_1^{\infty} \frac{1}{x^2} \dx\).
 \end{homeworkProblem}
 
 \end{document}

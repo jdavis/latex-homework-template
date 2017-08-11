@@ -1,0 +1,298 @@
+% PHY 280 Homework Style Sheet
+% Version 1.0 (30 Aug 16)
+% By Ethan Deneault
+%
+% Adapted from Josh Davis's great work: https://github.com/jdavis/latex-homework-template/blob/master/homework.tex
+%
+\ProvidesPackage{mathhomework}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{afterpage}
+\usepackage{fmtcount}
+\usepackage{relsize}
+\usepackage{braket}
+\usepackage{bm}
+\usepackage{mathpazo}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{siunitx}
+\usepackage{ifthen}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+
+%%%% TIKZ LIBRARIES %%%%
+
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shapes.callouts}
+\usetikzlibrary{automata}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations.pathmorphing}
+
+%%%% SIUNITX SETUP %%%%
+
+\protected\def\numpi{\text{\ensuremath{\pi}}}  % Hack fix for mathpazo \pi for siunitx 
+\sisetup{input-symbols = \numpi}
+
+%%%% NEW MATH SYMBOLS %%%%
+
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\erfc}{erfc}
+
+\newcommand\mat[1]{\ensuremath\mathsf{#1}}
+\def\del{\nabla}
+
+\renewcommand{\vec}[1]{%
+	\if#1\relax\bm{#1}\else\mathbf{#1}\fi
+}
+
+% For augmented matrices
+\newenvironment{amatrix}[1]{%
+  \left(\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right)
+}
+
+%For circled numbers
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\newcommand{\unitvec}[1]{\boldsymbol\hat{\bm{#1}}}
+
+\newcommand{\ihat}{\,\unitvec{\imath}}
+\newcommand{\jhat}{\,\unitvec{\jmath}}
+\newcommand{\khat}{\,\hat{\rule{0ex}{1.5ex}\bm{k}}}
+
+\renewcommand{\div}[1]{\del\cdot #1}
+\newcommand{\curl}[1]{\del\times #1}
+\newcommand{\grad}[1]{\del #1}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivative operator
+\newcommand{\deriv}[3][]{\frac{\mathrm{d^{#1}}#2}{\mathrm{d}#3^{#1}}}
+\newcommand{\dderiv}[3][]{\dfrac{\mathrm{d^{#1}}#2}{\mathrm{d}#3^{#1}}}
+
+% For partial derivative operator
+\newcommand{\pderiv}[3][]{\frac{\partial^{#1} #2}{\partial #3^{#1}}}
+\newcommand{\dpderiv}[3][]{\dfrac{\partial^{#1} #2}{\partial #3^{#1}}}
+
+% Integrals
+\newcommand\dint{\displaystyle\mathlarger{\int}}
+\newcommand{\dx}{\,\mathrm{d}x}
+\renewcommand{\d}{\mathrm{d}}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\vspace{12pt}\textbf{\large Solution}\vspace{12pt}}
+\renewcommand{\part}[1][]{%
+\ifthenelse{\equal{#1}{}}{\vspace{12pt}\textbf{\large Part \alph{partCounter}} \vspace{12pt} \stepcounter{partCounter}}{\vspace{12pt}\textbf{\large #1} \vspace{12pt} \stepcounter{partCounter}}%
+}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+%%%% BETTER LOOKING DOTS %%%%
+
+\renewcommand{\dot}[1]{\overset{\bm{.}}{#1}{}}
+\renewcommand{\ddot}[1]{\overset{\bm{..}}{#1}{}}
+
+%%%% FOR LISTINGS %%%%
+
+\usepackage{xcolor}
+\usepackage{textcomp}
+
+\definecolor{purple2}{RGB}{153,0,153} % there's actually no standard purple
+\definecolor{green2}{RGB}{0,153,0} % a darker green
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+
+\lstdefinestyle{python-idle-code}{%
+  language=Python,                   % the language
+  basicstyle=\normalsize\ttfamily,   % size of the fonts for the code
+  % Color settings to match IDLE style
+  keywordstyle=\color{orange},       % core keywords
+  keywordstyle={[2]\color{purple2}}, % built-ins
+  stringstyle=\color{green2},
+  numberstyle=\tiny\color{codegray},
+  numbers=left,
+  stepnumber=5,    
+  firstnumber=1,
+  numberfirstline=true,
+  commentstyle=\color{red}\slshape,
+  upquote=true,                      % requires textcomp
+  basicstyle=\ttfamily\small,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,        
+  backgroundcolor=\color{backcolour},          
+}
+
+\lstset{style=python-idle-code}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+\headheight=25pt
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\@hmwkAuthor}
+\chead{\@hmwkClass: \@hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+
+\newcommand{\enterBonusProblemHeader}{
+    \nobreak\extramarks{}{Bonus Problem continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Bonus Problem (continued)}{Bonus Problem continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitBonusProblemHeader}{
+    \nobreak\extramarks{Bonus Problem (continued)}{Bonus Problem continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Bonus Problem}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+\newenvironment{lasthomeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitBonusProblemHeader{}
+}
+
+\newenvironment{bonusProblem}{
+    \section{Bonus Problem}
+    \setcounter{partCounter}{1}
+    \enterBonusProblemHeader{}
+}{
+    \exitBonusProblemHeader{}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\def\test{\gdef\@test{}}
+
+\newcommand{\hmwkNumber}[1]{\g@addto@macro\@hmwkTitle{\hspace{-0.5ex}#1}}
+\newcommand{\@hmwkTitle}{
+\ifthenelse{\isundefined{\@test}}{Homework \#}{Test \#}
+}
+\newcommand{\hmwkDueDate}[1]{\gdef\@hmwkDueDate{#1}}
+\newcommand{\hmwkClass}[1]{\gdef\@hmwkClass{#1}}
+\newcommand{\hmwkAuthor}[1]{\gdef\@hmwkAuthor{#1}}
+
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\@hmwkClass:}\\ 
+    \textbf{\@hmwkTitle}}\\
+    \ifthenelse{\isundefined{\@test}}{\normalsize\vspace{0.1in}\small{Due\ on\ \@hmwkDueDate\ at 4:00 PM}\\}{\normalsize\vspace{0.1in}\small{\@hmwkDueDate}\\}
+    \vspace{3in}
+}
+
+\author{\textbf{\@hmwkAuthor}}
+\date{\today}
+
+%%%Imports from homework set
+
+\newcommand{\bq}{}
+\newcommand{\eq}{}
+\newcommand{\bbc}{\begin{enumerate}}
+\newcommand{\eec}{\end{enumerate}}
+\newcommand{\bc}{\item}
+\newcommand{\ec}{}
+
+
+
+
+

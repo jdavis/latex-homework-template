@@ -1,0 +1,218 @@
+%%%%%%%%%%%%%%%%%%%%%%%
+% PHY 280 Homework Style Sheet
+% Adapted from Josh Davis's great work: https://github.com/jdavis/latex-homework-template/blob/master/homework.tex
+%
+% Make sure that mathhomework.sty is in your working directory!
+%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass{article}
+\usepackage{mathhomework}
+
+
+%%%%%% Edit these variables %%%%%%
+
+\hmwkAuthor{Jane L.\ Jankowski} 		% Put your name here
+
+\hmwkNumber{1} 					% What Homework number is this? 
+
+\hmwkDueDate{September 4, 2016} 	% When is this due?
+
+\hmwkClass{Math Methods}			% Put the name of the Class here!
+ 
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\pagebreak
+\setcounter{page}{1}
+
+%%%%%%%%% Homework Problems Go  Below Here %%%%%%%%%%%%%%
+%
+% Enclose homework problems in the homeworkProblem environment
+% 
+% Use \solution to mark the problem solution
+%
+% Use \part to start a seperate part of the problem
+%
+% Use \pagebreak to start a new page.  
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% The package already has the amsmath extensions built in. To create a 
+% multi-line equation, use the split environment: 
+%
+% \begin{equation*}		<----- The * removes automatic equation numbering
+%	\begin{split}		<----- Allows for equations to be alinged at the &= sign
+%	
+%	y &= x^2+2		<----- Note the &=
+%	   &= 6			<----- On every line that needs to be aligned. 
+%
+%	\end{split}
+% \end{equation*}		<----- If you begin an environment, end it!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{homeworkProblem}
+    Give an appropriate positive constant $c$ such that $f(n) \leq c \cdot
+    g(n)$ for all $n > 1$.
+
+    \begin{enumerate}
+        \item $f(n) = n^2 + n + 1$, $g(n) = 2n^3$
+        \item $f(n) = n\sqrt{n} + n^2$, $g(n) = n^2$
+        \item $f(n) = n^2 - n + 1$, $g(n) = n^2 / 2$
+    \end{enumerate}
+
+    \solution
+
+    We solve each solution algebraically to determine a possible constant
+    $c$.
+    \\
+
+   \part
+
+    \begin{equation*}
+        \begin{split}
+            n^2 + n + 1 &=
+            \\
+            &\leq n^2 + n^2 + n^2
+            \\
+            &= 3n^2
+            \\
+            &\leq c \cdot 2n^3
+        \end{split}
+    \end{equation*}
+
+    Thus a valid $c$ could be when $c = 2$.
+    \\
+
+\part
+
+    \begin{equation*}
+        \begin{split}
+            n^2 + n\sqrt{n} &=
+            \\
+            &= n^2 + n^{3/2}
+            \\
+            &\leq n^2 + n^{4/2}
+            \\
+            &= n^2 + n^2
+            \\
+            &= 2n^2
+            \\
+            &\leq c \cdot n^2
+        \end{split}
+    \end{equation*}
+
+    Thus a valid $c$ is $c = 2$.
+    \\
+\pagebreak
+
+  \part
+
+    \begin{equation*}
+        \begin{split}
+            n^2 - n + 1 &=
+            \\
+            &\leq n^2
+            \\
+            &\leq c \cdot n^2/2
+        \end{split}
+    \end{equation*}
+
+    Thus a valid $c$ is $c = 2$.
+
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+    Prove a polynomial of degree $k$, $a_kn^k + a_{k - 1}n^{k - 1} + \hdots
+    + a_1n^1 + a_0n^0$ is a member of $\Theta(n^k)$ where $a_k \hdots a_0$
+    are nonnegative constants.
+
+    \begin{proof}
+        To prove that $a_kn^k + a_{k - 1}n^{k - 1} + \hdots + a_1n^1 +
+        a_0n^0$, we must show the following:
+
+        \begin{equation*}
+            \exists c_1 \exists c_2 \forall n \geq n_0,\ {c_1 \cdot g(n) \leq
+            f(n) \leq c_2 \cdot g(n)}
+        \end{equation*}
+
+        For the first inequality, it is easy to see that it holds because no
+        matter what the constants are, $n^k \leq a_kn^k + a_{k - 1}n^{k - 1} +
+        \hdots + a_1n^1 + a_0n^0$ even if $c_1 = 1$ and $n_0 = 1$.  This
+        is because $n^k \leq c_1 \cdot a_kn^k$ for any nonnegative constant,
+        $c_1$ and $a_k$.
+        \\
+
+        Taking the second inequality, we prove it in the following way.
+        By summation, $\sum\limits_{i=0}^k a_i$ will give us a new constant,
+        $A$. By taking this value of $A$, we can then do the following:
+
+        \begin{equation*}
+            \begin{split}
+                a_kn^k + a_{k - 1}n^{k - 1} + \hdots + a_1n^1 + a_0n^0 &=
+                \\
+                &\leq (a_k + a_{k - 1} \hdots a_1 + a_0) \cdot n^k
+                \\
+                &= A \cdot n^k
+                \\
+                &\leq c_2 \cdot n^k
+            \end{split}
+        \end{equation*}
+
+        where $n_0 = 1$ and $c_2 = A$. $c_2$ is just a constant. Thus the
+        proof is complete.
+    \end{proof}
+\end{homeworkProblem}
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Non sequential homework problems
+%
+% Use \displaystyle for larger symbols. 
+% However, this may break up lines in an ugly way. Use your discretion. 
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Jump to problem 18
+\begin{homeworkProblem}[18]
+    Evaluate $\displaystyle\sum_{k=1}^{5} k^2$ and $\sum_{k=1}^{5} (k - 1)^2$.
+
+    Find $\displaystyle\deriv{}{x} (x^4 + 3x^2 - 2)$ and $\dpderiv[2]{}{\alpha} \log\left|\frac{\alpha^2-7}{x}\right|$. 
+\end{homeworkProblem}
+
+% Continue counting to 19
+\begin{homeworkProblem}
+Here is my code: 
+\begin{lstlisting}[language=Python]
+```
+This calculates the logarithm of a user-supplied number
+Jane Jankowski, 2017
+```
+import numpy as np
+
+UserInput = input('Please enter x')
+if number <= 0:
+	print('Choose a number greater than zero!') # Who would do this?
+else:
+	print('Log({}) = {:4f}'.format(UserInput, np.log(UserInput)))	
+\end{lstlisting}
+\end{homeworkProblem}
+
+% Go back to where we left off
+\begin{homeworkProblem}[3]
+    Evaluate the integrals
+    $\displaystyle\int_0^1 (1 - x^2) \dx$
+    and
+    $\int_1^{\infty} \frac{1}{x^2} \dx$.
+\end{homeworkProblem}
+
+\end{document}

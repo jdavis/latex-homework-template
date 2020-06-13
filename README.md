@@ -1,7 +1,7 @@
 latex-homework-template
 =======================
 
-The LaTeX file that I use as the base for all my homeworks in university.
+The LaTeX file that I use as the base for all my homeworks in university. You should follow [me on Twitter][twitter].
 
 ## Features
 
@@ -57,3 +57,4 @@ This code is distributed under the MIT license. For more info, read the
 
 [texshop]: http://pages.uoregon.edu/koch/texshop/
 [credit]: http://www.latextemplates.com/template/programming-coding-assignment
+[twitter]: https://twitter.com/jldavis

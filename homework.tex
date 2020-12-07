@@ -68,6 +68,7 @@
 \newenvironment{homeworkProblem}[1][-1]{
     \ifnum#1>0
         \setcounter{homeworkProblemCounter}{#1}
+        \nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
     \fi
     \section{Problem \arabic{homeworkProblemCounter}}
     \setcounter{partCounter}{1}
